@@ -3,11 +3,28 @@
   padding: 0;
   margin: 0;
 }
+//size
 @mixin size-set($width, $height) {
   width: $width;
   height: $height;
 }
 
+//flex
+@mixin flex-set($justify, $align, $flex) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $flex;
+}
+
+//font 같은 거 %
+%font-weight {
+  font-weight: 100;
+}
+
+
+
+//color
 $color-1 : #333;
 $color-2 : salmon;
 $color-3 : white;
@@ -16,12 +33,18 @@ $color-3 : white;
 #container {
   @include size-set(100vw, 100vh);
   background-color: $color-1;
+  @include flex-set(center, center, row);
 
   & > div {
     @include size-set(50vw, 50vh);
     background-color: $color-2;
 
     h1 {
+      @extend %font-weight;
+      color: $color-3;
+    }
+    p {
+      @extend %font-weight;
       color: $color-3;
     }
   }
